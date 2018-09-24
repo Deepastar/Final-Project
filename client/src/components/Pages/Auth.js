@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 class Auth extends Component{
     state = {
@@ -27,11 +27,11 @@ class Auth extends Component{
         return(
             <React.Fragment>
                 <div>
-                    <h1> Login </h1>
+                    <h1> SignUp </h1>
                     <form>
                         <input placeholder="userName" name="userName" type="text" onChange={this._handleInputChange}/>
                         <input placeholder="Password" name="password" type="password" onChange={this._handleInputChange}/>
-                        <button onClick={this.handleFormSubmit}>Login</button>
+                        <button onClick={this.handleFormSubmit}>SignUp</button>
                     </form>
                 </div>
             </React.Fragment>
