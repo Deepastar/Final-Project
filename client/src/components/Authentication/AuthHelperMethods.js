@@ -6,6 +6,7 @@ export default class AuthHelperMethods {
     //THIS LINE IS ONLY USED WHEN YOU'RE IN PRODUCTION MODE!
     this.domain = domain || "http://localhost:3001"; // API server domain
   }
+
   login = (username, password) => {
     // Get a token from api server using the fetch api
     return this.fetch(`/log-in`, {
