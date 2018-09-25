@@ -35,11 +35,12 @@ class Auth extends Component{
     }
 
     findUser = ()=>{
-        API.getUser(this.state.userName)
+        API.getUser(this.state.userName, this.state.password)
         .then(res => {
-            if(res.data != null && (res.data.password === this.state.password)){
+            if(res.data != null){
                 this.setState({passwordMatch: true});
                 this.setState({ existingUser: true });
+                localStorage.setItem("id_token", res.data.token);
                 this.props.history.push(`/`)
             } else{
                 this.setState({loginFailed: true});
