@@ -1,19 +1,34 @@
 import React, { Component } from "react";
-import DayPicker from 'react-day-picker';
-import DayPickerInput from 'react-day-picker/DayPickerInput';
-import 'react-day-picker/lib/style.css';
-
-
+import Datetime from "react-datetime";
+import "react-datetime/css/react-datetime.css"
 
 class Appointment extends Component {
+    state = {
+        time: '10:00',
+        day: ""
+    }
+
     selectDate = () => {
         return (
           <div>
-            <p>Please type a day:</p>
-            <DayPickerInput onDayChange={day => console.log(day)} />
+            <p>Please Select a day:</p>
+            <Datetime/>
           </div>
         );
       }
+    
+    onChange = time => this.setState({time});
+    
+    // selectTime = () => {
+    //     return(
+    //         <div>
+    //             <p>
+    //                 Please pick a time:
+    //             </p>
+    //             <TimePicker onChange={this.onChange} value={this.state.time} />
+    //         </div>
+    //     );
+    // }
 
     render() {
         return (
@@ -23,7 +38,12 @@ class Appointment extends Component {
                     <p>
                         Make Appointment
                     </p>
-                    {this.selectDate()}
+                    <div className="text-left row">
+                        <div className="col-6">
+                            {this.selectDate()}
+                        </div>
+                    </div>
+                    
                 </div>
             </div>
         );
