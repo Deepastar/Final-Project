@@ -26,9 +26,9 @@ class Auth extends Component{
     }
 
 
-    // componentDidMount(){
-
-    // }
+    componentDidMount(){
+        localStorage.clear();
+    }
 
     renderRedirect = () => {
           return <Redirect to='/aboutus' />
@@ -41,6 +41,7 @@ class Auth extends Component{
                 this.setState({passwordMatch: true});
                 this.setState({ existingUser: true });
                 localStorage.setItem("id_token", res.data.token);
+                localStorage.setItem("userName", this.state.userName);
                 this.props.history.push(`/`)
             } else{
                 this.setState({loginFailed: true});

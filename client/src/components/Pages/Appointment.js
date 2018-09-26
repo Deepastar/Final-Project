@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css"
 import "./Appointment.css"
+import API from "../../util/API";
 
 class Appointment extends Component {
     state = {
@@ -9,7 +10,23 @@ class Appointment extends Component {
         day: "",
         service: "",
         availTimes: ["10:00 AM", "11:00 AM", "12:00 PM"],
-        availServices: ["Quick Wash", "Premium Wash", "Ultra Premium Wash", "Factory Detail"]
+        availServices: ["Quick Wash", "Premium Wash", "Ultra Premium Wash", "Factory Detail"],
+        isLoggedIn: false,
+        userName:"",
+        appoinmentCreationStatus: false
+    }
+
+    componentDidMount(){
+        // Check if the user is logged in.
+        this.setLoginStatus();
+    }
+
+    setLoginStatus = () => {
+        var token = localStorage.getItem("id_token");
+        if( token !== null){
+            var userName = localStorage.getItem("userName");
+            this.setState({isLoggedIn: true, userName: userName});
+        }
     }
 
     selectDate = () => {
@@ -25,9 +42,11 @@ class Appointment extends Component {
         );
       }
     
-    onDateChange = day => this.setState({day:day});
-    onTimeChange = time => this.setState({time:time});
-    
+    onDateChange = day => {
+        console.log("Day: " + Datetime.moment(day).format("YYYY-MM-DD"));
+        this.setState({day:day});
+    }
+        
     handleTimeChange = (event) => {
         this.setState({time: event.target.value});
     }
@@ -37,6 +56,18 @@ class Appointment extends Component {
     }
 
     handleSubmit = (event) => {
+        console.log("Login status: " + this.state.isLoggedIn)
+        
+        if(this.state.isLoggedIn){
+            API.createAppointment(this.state.userName, localStorage.getItem("id_token"), this.state.day, this.state.time)
+            .then(res =>{
+                if(typeof res.data !== "undefined"){
+                    this.setState({appoinmentCreationStatus: true});
+                }
+            })
+        }else{
+            this.props.history.push(`/auth`);
+        }
         event.preventDefault();
     }
     
@@ -102,8 +133,19 @@ class Appointment extends Component {
                             <input type="submit" value="Submit"/>
                         </div>
                     </div> 
+                    {this.state.appoinmentCreationStatus ? <SuccessAlert/> : null}
                     </form>
                 </div>
+            </div>
+        );
+    }
+}
+
+class SuccessAlert extends Component{
+    render(){
+        return (
+            <div className="row">
+                <p className="text-success mt-2">Appointment SuccessFully Created!!!</p>
             </div>
         );
     }
