@@ -2,6 +2,7 @@ const router = require("express").Router();
 const jwt = require("jsonwebtoken");
 const appointmentController = require("../../controllers/AppointmentController");
 
+// Verifies whether the token is valid or not.
 var verifyToken = function(req, res, next){
   
   var bearer = req.headers["authorization"];

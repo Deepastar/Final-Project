@@ -3,13 +3,15 @@ import API from "../../util/API";
 import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 
+
+
 class Auth extends Component{
     state = {
         userName: "",
         password: "",
         existingUser: false,
         passwordMatch: false,
-        loginFailed: false,
+        loginFailed: false
     }
 
     _handleInputChange = (inp) => {
@@ -35,6 +37,19 @@ class Auth extends Component{
     }
 
     findUser = ()=>{
+        /*
+        Route Map
+            SignIn.js
+                |
+                 --> API.js(getUser)
+                    |
+                     --> routes/index.js (/login)
+                        |
+                         --> routes/api/LoginApi.js ( /:userName/:password )
+                             |
+                              --> controllers/LoginController.js (findUser)
+
+        */
         API.getUser(this.state.userName, this.state.password)
         .then(res => {
             if(res.data != null){
@@ -42,7 +57,7 @@ class Auth extends Component{
                 this.setState({ existingUser: true });
                 localStorage.setItem("id_token", res.data.token);
                 localStorage.setItem("userName", this.state.userName);
-                this.props.history.push(`/`)
+                this.props.history.push(`/`);
             } else{
                 this.setState({loginFailed: true});
             }

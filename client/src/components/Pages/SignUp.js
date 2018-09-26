@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import API from "../../util/API";
-import { Redirect } from 'react-router-dom'
 import { Link } from 'react-router-dom';
 
 class SignUp extends Component{
@@ -39,31 +38,32 @@ class SignUp extends Component{
     };
 
     findUser = (createUserFlag)=>{
-        API.getUser(this.state.userName)
+        API.getUserForSignUp(this.state.userName)
         .then(res => {
             if(res.data != null){
                 this.setState({ existingUser: true });
-                if(!createUserFlag){
-                    if(res.data.password === this.state.password){
-                        this.setState({passwordMatch: true});
-                    } else{
-                        this.setState({loginFailed: true});
-                    }
-                }
+                // if(!createUserFlag){
+                //     if(res.data.password === this.state.password){
+                //         this.setState({passwordMatch: true});
+                //     } else{
+                //         this.setState({loginFailed: true});
+                //     }
+                // }
             } else{
-                if(!createUserFlag){
-                    this.setState({loginFailed: true});
-                } else{
-                    this.createUser();
-                }
+                // if(!createUserFlag){
+                //     this.setState({loginFailed: true});
+                // } else{
+                //     this.createUser();
+                // }
+                this.createUser();
             }
         })
         .catch(err => console.log(err));
     };
 
-    renderRedirect = () => {
-        return <Redirect to='/aboutus' />
-    }
+    // renderRedirect = () => {
+    //     return <Redirect to='/aboutus' />
+    // }
 
     render(){
         return(
@@ -94,7 +94,8 @@ class SignUp extends Component{
                         <Link to="/auth" className={window.location.pathname === "/auth" ? "nav-link active": "nav-link"}>
                             Already a member? Sign In.
                         </Link>
-
+                    </div>
+                    <div className="col-sm-6">
                         {this.state.existingUser ? <ShowAlert/> : null}
                         {this.state.createUserStatus? <CreateSuccess/>:null}
                     </div>
@@ -120,6 +121,9 @@ class CreateSuccess extends Component{
         return (
             <div>
                 <p className="text-success mt-2">Login Created Successfully!!!</p>
+                <Link to="/auth" className={window.location.pathname === "/auth" ? "nav-link active": "nav-link"}>
+                            Click Here to Sign In.
+                </Link>
             </div>
         );
     }

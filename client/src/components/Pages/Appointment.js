@@ -59,6 +59,19 @@ class Appointment extends Component {
         console.log("Login status: " + this.state.isLoggedIn)
         
         if(this.state.isLoggedIn){
+            /*
+        Route Map
+            Appointment.js
+                |
+                 --> API.js(createAppointment)
+                    |
+                     --> routes/index.js (/appointment)
+                        |
+                         --> routes/api/AppointmentApi.js ( /create )
+                             |
+                              --> controllers/AppointmentController.js (create)
+
+        */
             API.createAppointment(this.state.userName, localStorage.getItem("id_token"), this.state.day, this.state.time)
             .then(res =>{
                 if(typeof res.data !== "undefined"){
