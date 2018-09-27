@@ -26,6 +26,8 @@ var verifyToken = function(req, res, next){
 router.route("/create")
   .post(verifyToken, appointmentController.create);
 
-router.route("/").get(appointmentController.findAllAppt);
+router.route("/rawDay/:rawDay").get(appointmentController.findAllAppt);
+router.route("/userName/:userName").get(appointmentController.findApptByUser);
+router.route("/:day").get(appointmentController.findApptByDay);
 
 module.exports = router;
