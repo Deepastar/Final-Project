@@ -30,7 +30,7 @@ export default {
        return axios.post("api/login", {userName: userName, email: email, password: password});
     },
 
-    createAppointment: function(userName, id_token, rawDay, day, time, service){
+    createAppointment: function(userName, id_token, rawDay, day, time, service, address){
         var bearerToken = "Bearer " + id_token;
 
         //Calls the route in routes/api/appointment/AppointmentApi.js
@@ -42,7 +42,8 @@ export default {
                rawDay: rawDay,
                day: day,
                time: time,
-               service: service
+               service: service,
+               address: address
            },
            headers: {"Authorization": bearerToken}
        });

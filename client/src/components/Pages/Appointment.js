@@ -11,6 +11,7 @@ class Appointment extends Component {
         time: "",
         day: "",
         service: "",
+        address: "",
         availTimes: {times: ["09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"]},
         currentAvailTimes: {times: []},
         availServices: ["Quick Wash", "Premium Wash", "Ultra Premium Wash", "Factory Detail"],
@@ -100,7 +101,6 @@ class Appointment extends Component {
     onDateChange = day => {
         this.setState({rawDay: day, appoinmentCreationStatus: false});
         day = Datetime.moment(day).format("YYYY-MM-DD");
-        console.log("Day: " + day);
 
         this.setState({ day: day});
         var bookedArray = [];
@@ -125,9 +125,11 @@ class Appointment extends Component {
         this.setState({ service: event.target.value, appoinmentCreationStatus: false });
     }
 
-    handleSubmit = (event) => {
-        console.log("Login status: " + this.state.isLoggedIn)
+    handleAddressChange = (event) => {
+        this.setState({address: event.target.value});
+    }
 
+    handleSubmit = (event) => {
         if (this.state.isLoggedIn) {
             /*
         Route Map
@@ -142,7 +144,7 @@ class Appointment extends Component {
                               --> controllers/AppointmentController.js (create)
 
         */
-            API.createAppointment(this.state.userName, localStorage.getItem("id_token"), this.state.rawDay, this.state.day, this.state.time, this.state.service)
+            API.createAppointment(this.state.userName, localStorage.getItem("id_token"), this.state.rawDay, this.state.day, this.state.time, this.state.service, this.state.address)
                 .then(res => {
                     if (typeof res.data !== "undefined") {
                         this.setState({ appoinmentCreationStatus: true });
@@ -198,6 +200,7 @@ class Appointment extends Component {
                             <th scope="col">Day</th>
                             <th scope="col">Time</th>
                             <th scope="col">Service</th>
+                            <th scope="col">Address</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -208,6 +211,7 @@ class Appointment extends Component {
                                 <td>{item.day}</td> 
                                 <td>{item.time}</td>  
                                 <td>{item.service}</td> 
+                                <td>{item.address}</td>
                             </tr>);
                         })
                     }
@@ -224,7 +228,7 @@ class Appointment extends Component {
             <div>
                 <p>
                     Please pick a Service:
-            </p>
+                </p>
 
                 <select value={this.state.sevice} onChange={this.handleServiceChange}>
                     {
@@ -238,6 +242,17 @@ class Appointment extends Component {
         );
     }
 
+  
+
+    displayAddress = () => {
+        return(
+            <div>
+                <p>Please enter Adderss</p>
+                <textarea value={this.state.adderss} name="adderss" onChange={this.handleAddressChange}></textarea>
+            </div>
+        )
+    }
+
     render() {
         return (
             // <div className="container">
@@ -249,16 +264,19 @@ class Appointment extends Component {
                     </p> */}
                     <form onSubmit={this.handleSubmit}>
                         <div className="text-left row">
-                            <div className="col-3">
+                            <div className="col-2">
                                 {this.selectDate()}
                             </div>
-                            <div className="col-3">
+                            <div className="col-2">
                                 {this.displayDropDown()}
                             </div>
-                            <div className="col-3">
+                            <div className="col-2">
                                 {this.displayServices()}
                             </div>
                             <div className="col-3">
+                                {this.displayAddress()}
+                            </div>
+                            <div className="col-2">
                                 <p>&nbsp;</p>
                                 <input type="submit" value="Submit" />
                             </div>

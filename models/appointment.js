@@ -5,7 +5,8 @@ const appointmentSchema = new Schema({
     rawDay: {type:Date, required:true},
     day: {type: String, required:true},
     time: {type:String, required:true},
-    service: {type: String, required: true}
+    service: {type: String, required: true},
+    address: {type: String, required: true}
 });
 
 const Appointment = mongoose.model("Appointment", appointmentSchema);
