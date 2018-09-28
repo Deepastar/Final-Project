@@ -20,7 +20,7 @@ const Navboot = () => (
                 </li>
                 <li className="nav-link mr-4 ml-4">
                 <Link to="/appt" className={window.location.pathname === "/appt" ? "nav-link active": "nav-link"}>
-                    Online Appoitment
+                    Online Appointment
                 </Link>
                 </li>
                 <li className="nav-link mr-4 ml-4">
