@@ -21,30 +21,7 @@ class Appointment extends Component {
         appoinmentCreationStatus: false,
         appts: []
     }
-
-    /*trying to get appt time by filtering the scheduled appoitments
-
-    try with _.differece() method
-      |-->
-     availTimes: ["10:00 AM", "11:00 AM", "12:00 PM", "01:00 PM", "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"],
-     scheduledTimes: ["11:00 AM", "02:00 PM"],
-     newavailTimes = _.difference()
-
-    var c = _.difference(a.map(e => e.id), b.map(e =>e.id));-------main fun
-    ------this is for ref----
-    _.difference = restArguments(function(array, rest) {
-    rest = flatten(rest, true, true);
-    return _.filter(array, function(value){
-      return !_.contains(rest, value);
-    });
-    });
-    refer:https://stackoverflow.com/questions/13147278/using-underscores-difference-method-on-arrays-of-objects
-    
-    try with   _.without method
-    
-     _.without([1, 2, 1, 0, 3, 1, 4], 0, 1);
-     => [2, 3, 4]
-    */
+  
 
     componentDidMount() {
         // Check if the user is logged in.

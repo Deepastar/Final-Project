@@ -9,7 +9,7 @@ const AboutUs = () => (
         <div className="row" id="rId">
 
             <div className="col-md-6" id="colId">
-                <div className="card-body mt-5 p-0">
+                <div className="card-body mt-3 p-0">
                     <div className="card-body text-center">
                         <h2 className="header">About Us</h2>
                         <p>
@@ -22,7 +22,7 @@ const AboutUs = () => (
                     </div>
                 </div>
 
-                <div className="col-md-12 mt-4 p-0">
+                <div className="col-md-12 mt-2 p-0">
 
                     <div className="card-body text-center ">
                         <h2 className="header">Our Mission</h2>
@@ -36,7 +36,7 @@ const AboutUs = () => (
             </div>
 
             <div className="col-md-6 mt-5">
-                <div id="carouselExampleSlidesOnly" className="carousel slide" data-ride="carousel" data-interval="2000">
+                <div id="carouselExampleSlidesOnly" className="carousel slide" data-ride="carousel" data-interval="1000">
                     <div className="carousel-inner">
                         <div className="carousel-item active">
                             <img className="d-block w-100" src="./Images/Img1.png" alt="First slide"></img>

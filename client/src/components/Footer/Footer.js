@@ -33,14 +33,14 @@ class FooterPage extends React.Component {
                             <h6 className="text-uppercase mb-4 font-weight-bold">Contact</h6>
                             <p><i className="fa fa-home mr-3" id="footIcon"></i> Orlando, FL 32826, US</p>
                             <p><i className="fa fa-envelope mr-3" id="footIcon"></i> info@gmail.com</p>
-                            <p><i className="fa fa-phone mr-3" id="footIcon"></i> + 01 234 567 88</p>
-                            <p><i className="fa fa-print mr-3" id="footIcon"></i> + 01 234 567 89</p>
+                            <p><i className="fa fa-phone mr-3" id="footIcon"></i> (+1) 012-345-6788</p>
+                            <p><i className="fa fa-print mr-3" id="footIcon"></i> (+1) 012-345-6788</p>
                         </Col>
                     </Row>
                     {/* <hr/> */}
                     <Row className="d-flex align-items-center" id="panelFoot1">
                         <Col md="8" lg="8">
-                            <p className="text-center text-md-left dark-text" id="panelFoot">&copy; {(new Date().getFullYear())} Copyright: <a className="link" id="panelFoot" href="https://www.carwashservice.com"> www.carwashservice.com </a></p>
+                            <p className="text-center text-md-left dark-text" id="panelFoot">&copy; {(new Date().getFullYear())} Copyright: <a className="link" id="panelFoot" href="https://www.carwashservice.com">carwashservice</a></p>
                         </Col>
                         <Col md="4" lg="4" className="ml-lg-0">
                             <div className="text-center text-md-right">
