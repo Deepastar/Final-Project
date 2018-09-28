@@ -29,7 +29,7 @@ const Navboot = () => (
                 </Link>
                 </li>
             </ul>
-            <div className="collapse navbar-collapse justify-content-end">
+            <div className="navbar-nav" id="signIn">
 
             <Link to="/auth" className={window.location.pathname === "/auth" ? "nav-link active": "nav-link"}>
                 {localStorage.getItem("userName") == null ? "Sign Up/Login" : "Logout"}
