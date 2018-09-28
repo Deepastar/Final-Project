@@ -88,13 +88,17 @@ class Appointment extends Component {
         return (
             <div>
                 <p>Please Select a day:</p>
+                
                 <Datetime isValidDate={valid} timeFormat={false} onChange={this.onDateChange} value={this.state.day} />
             </div>
         );
     }
 
+    getIcon = () => {
+        return (<i class="far fa-calendar-alt"></i>);
+    }
     onDateChange = day => {
-        this.setState({rawDay: day});
+        this.setState({rawDay: day, appoinmentCreationStatus: false});
         day = Datetime.moment(day).format("YYYY-MM-DD");
         console.log("Day: " + day);
 
@@ -114,11 +118,11 @@ class Appointment extends Component {
     }
 
     handleTimeChange = (event) => {
-        this.setState({ time: event.target.value });
+        this.setState({ time: event.target.value, appoinmentCreationStatus: false });
     }
 
     handleServiceChange = (event) => {
-        this.setState({ service: event.target.value });
+        this.setState({ service: event.target.value, appoinmentCreationStatus: false });
     }
 
     handleSubmit = (event) => {
@@ -236,12 +240,13 @@ class Appointment extends Component {
 
     render() {
         return (
+            // <div className="container">
             <div className="text-center mt-5">
-                <h1>Appointment</h1>
+                {/* <h1>Appointment</h1> */}
                 <div>
-                    <p>
+                    {/* <p>
                         Make Appointment
-                    </p>
+                    </p> */}
                     <form onSubmit={this.handleSubmit}>
                         <div className="text-left row">
                             <div className="col-3">
@@ -259,10 +264,11 @@ class Appointment extends Component {
                             </div>
                         </div>
                         {this.state.appoinmentCreationStatus ? <SuccessAlert /> : null}
-                        {this.displayAppointments()}
+                        {this.state.isLoggedIn ? this.displayAppointments() : null}
                     </form>
                 </div>
             </div>
+            // </div>
         );
     }
 }
