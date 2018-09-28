@@ -25,6 +25,7 @@
     "express": "^4.15.4",
     "if-env": "^1.0.4",
     "jsonwebtoken": "^8.3.0",
+    "mdbreact": "^4.8.0",
     "moment": "^2.22.2",
     "mongoose": "^5.0.17",
     "react-datetime": "^2.15.0",

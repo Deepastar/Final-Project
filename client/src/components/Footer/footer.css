@@ -1,0 +1,18 @@
+/* #footerMain{
+    height: 300px;
+}
+
+#footID{
+    height:300px;
+}
+#panelFoot{
+    margin-top: 0.15rem;
+    height:0.2em;
+}
+#panelFoot{
+    color: maroon;
+} */
+
+#panelFoot, #footIcon{
+    color: yellow;
+}

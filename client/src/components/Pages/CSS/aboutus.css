@@ -1,0 +1,54 @@
+.card-body{
+    background-color: rgba(245, 245, 245, 0);
+    color: black;
+}
+.quteText{
+font-family: 'Patrick Hand', cursive;
+font-size: 40px;
+}
+.quote{
+    color: black;
+}
+#icon{
+    color: green;
+}
+i{
+color: green;
+} 
+.jumbotron{
+background-image: url("./Images/Newone.png");
+    color: rgba(178, 238, 178, 0.911);
+    font-family: 'Notable', sans-serif;
+}
+h4{
+    margin-left: 4.5em;
+    text-align: justify;
+}
+#slide{
+    background-color: rgba(245, 245, 245, 0);
+    color: black;
+}
+.col-md-12{
+    background-color: rgba(245, 245, 245, 0.034);
+}
+
+#contId{
+background-color: rgb(248, 216, 135);
+}
+.header{
+    color: maroon;
+}
+.headerSmall{
+    color: maroon;
+}
+.card-body-fluid{
+    padding: 2;
+}
+
+/* .fas fa-quote-left{
+    font-size: 0.2em;
+} */
+
+
+
+
