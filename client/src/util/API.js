@@ -47,5 +47,9 @@ export default {
            headers: {"Authorization": bearerToken}
        });
 
+    },
+    createContacts: function(req){
+        // return axios.post("api/contacts", {name:req.name, email:req.email, comment:req.comment});
+        return axios.post("api/contacts", req);
     }
 };

@@ -42,28 +42,12 @@ class SignUp extends Component{
         .then(res => {
             if(res.data != null){
                 this.setState({ existingUser: true });
-                // if(!createUserFlag){
-                //     if(res.data.password === this.state.password){
-                //         this.setState({passwordMatch: true});
-                //     } else{
-                //         this.setState({loginFailed: true});
-                //     }
-                // }
             } else{
-                // if(!createUserFlag){
-                //     this.setState({loginFailed: true});
-                // } else{
-                //     this.createUser();
-                // }
                 this.createUser();
             }
         })
         .catch(err => console.log(err));
     };
-
-    // renderRedirect = () => {
-    //     return <Redirect to='/aboutus' />
-    // }
 
     render(){
         return(

@@ -1,6 +1,7 @@
 module.exports = {
     Login: require("./login"),
     Appointment: require("./appointment"),
-    Services: require("./services")
+    Services: require("./services"),
+    Contacts:require("./contacts")
   };
   
