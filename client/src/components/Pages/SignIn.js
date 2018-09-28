@@ -62,7 +62,7 @@ class Auth extends Component{
                 this.setState({loginFailed: true});
             }
         })
-        .catch(err => console.log(err));
+        .catch(err => this.setState({loginFailed: true}));
     };
 
     render(){

@@ -12,11 +12,17 @@ module.exports = {
         db.Login
             .findOne({userName: req.params.userName, password: req.params.password}, req.body)
             .then((dbModel) => {
-                jwt.sign({user: dbModel.userName}, "secret-key", (err, token) => {
-                    res.json({token});
-                });
+                if(typeof dbModel !== "undefined" && dbModel !== null){
+                    jwt.sign({user: dbModel.userName}, "secret-key", (err, token) => {
+                        if(err !== null)
+                            res.status(403).json(err);
+                        res.json({token});
+                    });
+                } else{
+                    res.json(dbModel);
+                }
             })
-            .catch(err => res.status(422).json(err));
+            .catch(err => { console.log(err); res.status(422).json(err)});
     },
     findUserName: function(req, res){
         db.Login
